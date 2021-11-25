@@ -6,11 +6,14 @@ const Todo = () => {
   const [lista, setLista] = useState([]);
   const [modoEdicion, setModoEdicion] = useState(false);
   const [id, setId] = useState('');
+  const [error, setError] = useState(null);
+
 
   const agregarTarea = e => {
     e.preventDefault();
     if (!tarea.trim()) {
       console.log('Error! esta vacio');
+      setError('Escriba algo por favor...')
       return
     }
     console.log(tarea);
@@ -21,6 +24,7 @@ const Todo = () => {
       text: tarea,
     }])
     setTarea('');
+    setError(null);
   }
 
   const eliminarTarea = id => {
@@ -41,6 +45,7 @@ const Todo = () => {
     e.preventDefault();
     if (!tarea.trim()) {
       console.log('Elemento Vacio');
+      setError('Escriba algo por favor...')
       return
     }
 
@@ -49,6 +54,7 @@ const Todo = () => {
     setTarea('');
     setId('');
     setModoEdicion(false);
+    setError(null);
   }
 
 
@@ -92,7 +98,8 @@ const Todo = () => {
               modoEdicion ? 'Editar Tarea' : 'Agregar Tarea'
             }
         </h4>
-        <form className="form-group d-grid gap-2" onSubmit={modoEdicion ? editarTarea : agregarTarea}>
+          <form className="form-group d-grid gap-2" onSubmit={modoEdicion ? editarTarea : agregarTarea}>
+            {error ? (<span className="text-danger">{error}</span> ) : ''}
             <input
               type="text"
               className="form-control mb-2"
