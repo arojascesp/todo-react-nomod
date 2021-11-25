@@ -65,7 +65,7 @@ const Todo = () => {
       <div className="row">
 
       
-      <div className="col-8">
+      <div className="col-8 col-xs-10">
           <h4 className="text-center">
             {lista.length === 0 ? ('No hay Tareas') : ('Lista de Tareas')}
         </h4>
@@ -92,7 +92,7 @@ const Todo = () => {
             }
         </ul>
       </div>
-      <div className="col-4">
+      <div className="col-4 col-xs-10">
         <h4 className="text-center">
             {
               modoEdicion ? 'Editar Tarea' : 'Agregar Tarea'
